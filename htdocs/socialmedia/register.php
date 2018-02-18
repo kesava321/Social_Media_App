@@ -1,3 +1,23 @@
+<?php 
+session_start();
+$con = mysqli_connect("localhost","root","","SocialGroup"); //connection varaible
+if(mysqli_connect_errno())
+{
+	echo "Failed to connect".mysqli_connect_errno();
+}
+//Declaring varaibles to prevent errors
+$fname = ""; //First name
+$lname = ""; //Last name
+$em = ""; //email
+$em2 = ""; //email2
+$password = ""; //password
+$password2 = ""; //password2
+$date = ""; //sign up date
+$error_array = ""; //Holds error messages
+
+
+?>
+
 <html>
 <head>
 	<title>Welcome to Social Group</title>
