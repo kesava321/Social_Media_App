@@ -15,6 +15,7 @@ $password2 = ""; //password2
 $date = ""; //sign up date
 $error_array = array(); //Holds error messages
 
+
 if (isset($_POST['register_button'])){
 
 	//Registration form values
@@ -101,27 +102,36 @@ if (isset($_POST['register_button'])){
 
 		//Generate username by concatenating first name and last name
 		$username = strtolower($fname . "_" . $lname);
-		$check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username= '$username'");
+		$check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$username'");
+
 
 		$i = 0;
 		//if username exsits add number to username
-		while(mysqli_num_rows($check_username_query) !=0){
+		while(mysqli_num_rows($check_username_query) != 0){
 			$i++; //Add 1 to i 
 			$username = $username . "_" . $i;
-			$check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username= '$username'");
+			$check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$username'");
 		}
 
 		//Profile picture assignment
-		$rand = rand(1,2,3); //Random number between 1 nd 2
+		$rand = rand(1,2); //Random number between 1 nd 2
 
 		if($rand = 1)
 		$profile_pic = "/assets/images/profile_pics/defaults/blue_default.png";
 		else if($rand = 2)
 		$profile_pic = "/assets/images/profile_pics/defaults/red_default.png";
-		else if($rand = 3)
-		$profile_pic = "/assets/images/profile_pics/defaults/green_default.png";
+	
 
+		//send values into database
+		$query = mysqli_query($con, "INSERT INTO users VALUES ('','$fname','$lname','$username','$em','$password','$date','profile_pic','0','0','no',',')"); 
 
+		array_push($error_array, "<span style='color: #14C800;'> Account set up! Please login! <span><br>");
+
+		//Clear session variables
+		$_SESSION['reg_fname'] = "";
+		$_SESSION['reg_lname'] = "";
+		$_SESSION['reg_email'] = "";
+		$_SESSION['reg_email2']= "";
 	}
 }
 
@@ -175,6 +185,11 @@ if (isset($_POST['register_button'])){
 
 		<br>
 		<input type="submit" name="register_button" value= "Register">
+
+		<br>
+		<?php if (in_array("<span style='color: #14C800;'> Account set up! Please login! <span><br>", $error_array)) echo "<span style='color: #14C800;'> Account set up! Please login! <span><br>"; ?>
+
+
 	</form>
 </body>
 </html>
