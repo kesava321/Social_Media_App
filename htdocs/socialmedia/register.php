@@ -95,6 +95,34 @@ if (isset($_POST['register_button'])){
 	if(strlen($password>30 || strlen($password) <5)){
 		array_push($error_array, "Your password must be between 5 and 30 charachters<br>");
 	}
+
+	if(empty($error_array)){
+		$password = md5($password); //Encrypts password before sending to database
+
+		//Generate username by concatenating first name and last name
+		$username = strtolower($fname . "_" . $lname);
+		$check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username= '$username'");
+
+		$i = 0;
+		//if username exsits add number to username
+		while(mysqli_num_rows($check_username_query) !=0){
+			$i++; //Add 1 to i 
+			$username = $username . "_" . $i;
+			$check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username= '$username'");
+		}
+
+		//Profile picture assignment
+		$rand = rand(1,2,3); //Random number between 1 nd 2
+
+		if($rand = 1)
+		$profile_pic = "/assets/images/profile_pics/defaults/blue_default.png";
+		else if($rand = 2)
+		$profile_pic = "/assets/images/profile_pics/defaults/red_default.png";
+		else if($rand = 3)
+		$profile_pic = "/assets/images/profile_pics/defaults/green_default.png";
+
+
+	}
 }
 
 ?>
