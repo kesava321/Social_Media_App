@@ -95,7 +95,7 @@ input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hove
 
 	}
 
-.second {
+#second {
 
 	display: none;
 }

@@ -10,9 +10,31 @@ require 'includes/form_handlers/login_handler.php';
 <head>
 	<title>Welcome to Social Group</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/register_style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="assets/js/register.js"></script>
 
 </head>
 <body>
+
+	<?php
+	//if button was pressed it hides login form and shows the signin form
+	if(isset($_POST['register_button'])){
+		echo '
+		<script>
+
+		$(document).ready(function(){
+			$("#first").hide();
+			$("#second").show();
+			
+		});
+
+		</script>
+
+		';
+	}
+
+
+	?>
 
 	<div class ="wrapper">	
 
