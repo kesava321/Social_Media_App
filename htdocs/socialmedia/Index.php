@@ -1,11 +1,5 @@
 <?php 
-$con = mysqli_connect("localhost","root","","SocialGroup"); //connection varaible
-if(mysqli_connect_errno())
-{
-	echo "Failed to connect".mysqli_connect_errno();
-}
-
-$query = mysqli_query($con, "INSERT INTO test VALUES ('1', 'Kesava')");
+require 'config/config.php'; 
 
  ?>
 
@@ -15,6 +9,6 @@ $query = mysqli_query($con, "INSERT INTO test VALUES ('1', 'Kesava')");
 	<title>SocialGroup</title>
 </head>
 <body>
-Secure connection established!!!
+hello kesava
 </body>
 </html>
