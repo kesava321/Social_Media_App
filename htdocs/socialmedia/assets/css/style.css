@@ -1,0 +1,33 @@
+@font-face{
+	font-family:'Pacifico';
+	src: url('../fonts/Pacifico.ttf');
+}
+
+body{
+	line-height: 17px;
+}
+
+.top_bar{
+	width: 100%;
+	min-width: 1050px;
+	height: 40px;
+	background-color: #B3E8FF;
+	border-bottom: 0.25em solid #EDEDED;
+	margin: 0 0 10px 0 ;
+	display: inline-flex;
+
+}
+
+.logo a{
+	font-family:'Pacifico', sans-serif;
+	margin-left: 10px;
+	font-size: 30;
+	position: relative;
+	top: 9px;
+	text-shadow: #73B6E2 0.5px 0.5px 0px;
+	color: #1086BA;
+}
+
+a.hover {
+	text-decoration: none;
+}
