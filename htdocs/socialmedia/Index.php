@@ -1,14 +1,8 @@
 <?php 
-require 'config/config.php'; 
-
+include("includes/header.php");
+session_destroy();
  ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>SocialGroup</title>
-</head>
-<body>
-hello kesava
+	Hello Kesava!!!
 </body>
 </html>
