@@ -5,13 +5,13 @@ if(isset($_POST['login_button'])){
 	$email = filter_var($_POST['log_email'], FILTER_SANITIZE_EMAIL); //Sanitize email
 
 	$_SESSION['log_email']=$email; //Store email into seesion variable
+	$password = md5($_POST['log_password']); //Get password
 
-	$passwordr = md5($_POST['log_password']); //Get password
-
-	$check_database_query = mysqli($con,"SELECT * FROM users WHERE email =' $email' AND password= '$password'");
+	$check_database_query = mysqli_query($con,"SELECT * FROM users WHERE email ='$email' AND password='$password'");
 	$check_login_query = mysqli_num_rows($check_database_query);
 
 	if($check_login_query == 1){
+		//access result from above query
 		$row = mysqli_fetch_array($check_database_query);
 		$username = $row['username'];
 

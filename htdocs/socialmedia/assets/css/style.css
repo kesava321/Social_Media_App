@@ -15,6 +15,7 @@ body{
 	border-bottom: 0.25em solid #EDEDED;
 	margin: 0 0 10px 0 ;
 	display: inline-flex;
+	position: fixed;
 
 }
 
@@ -28,6 +29,61 @@ body{
 	color: #1086BA;
 }
 
-a.hover {
+a:hover {
 	text-decoration: none;
+}
+
+nav {
+	float: right;
+	right: 1px;
+	position: absolute;
+	margin: 10px;
+
+}
+nav a{
+	position: relative;
+	color: #fff;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+nav a:hover {
+	border-bottom: 7px solid #1086BA;
+	color: #fff;
+}
+
+.wrapper {
+	margin: 0 auto;
+	top: 50px;
+	position: relative;
+	padding: 0 10px;
+	width: 75%;
+	min-width: 950px;
+}
+
+.column {
+	background-color: #E6EAE8;
+	padding: 10px;
+	border: 1px #D3D3D3;
+	border-radius: 5px;
+	box-shadow: 2px 2px 1px #D3D3D3;
+	z-index: -1;
+}
+
+.user_details {
+	width:250px;
+	float: left;
+	margin-bottom: 20px;
+}
+
+.user_details_left_right {
+	width: 125px;
+	display: inline-block;
+	position: absolute;
+}
+
+.user_details img {
+	height: 125px;
+	border-radius: 5px;
+	margin-right: 5px;
 }

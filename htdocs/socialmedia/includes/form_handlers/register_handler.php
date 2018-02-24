@@ -111,13 +111,13 @@ if (isset($_POST['register_button'])){
 		$rand = rand(1,2); //Random number between 1 nd 2
 
 		if($rand = 1)
-		$profile_pic = "/assets/images/profile_pics/defaults/blue_default.png";
+		$profile_pic = "assets/images/profile_pics/defaults/blue_default.png";
 		else if($rand = 2)
-		$profile_pic = "/assets/images/profile_pics/defaults/red_default.png";
+		$profile_pic = "assets/images/profile_pics/defaults/green_default.png";
 	
 
 		//send values into database
-		$query = mysqli_query($con, "INSERT INTO users VALUES ('','$fname','$lname','$username','$em','$password','$date','profile_pic','0','0','no',',')"); 
+		$query = mysqli_query($con, "INSERT INTO users VALUES ('', '$fname', '$lname', '$username', '$em', '$password', '$date', '$profile_pic', '0', '0', 'no', ',')"); 
 
 		array_push($error_array, "<span style='color: #14C800;'> Account set up! Please login! <span><br>");
 
