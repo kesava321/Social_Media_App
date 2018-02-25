@@ -8,6 +8,17 @@ class User {
 		$user_details_query = mysqli_query($con, "SELECT * FROM users WHERE username='$user'"); //return all inform form the user table for this user
 		$this->user = mysqli_fetch_array($user_details_query); //return this result as an array 
 	}
+	
+	public function getUsername(){
+		return $this->user['username'];
+	}
+	
+	public function getNumPosts(){
+		$username = $this->user['username'];
+		$query = mysqli_query($this->con, "SELECT num_posts FROM users WHERE username='$username'");
+		$row = mysqli_fetch_array($query);
+		return $row['num_posts'];
+	} 
 		
 			public function getFirstAndLastName(){
 				$username = $this->user['username'];
