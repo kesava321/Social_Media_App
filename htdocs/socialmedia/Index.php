@@ -33,13 +33,13 @@ if(isset($_POST['post'])){
 		<form class="post_form" action="index.php" method="POST">
 			<textarea name="post_text" id="post_text" placeholder="What's on your mind?"></textarea>
 			<input type="submit" name="post" id="post_button" value="Post"> 
-			<br>
+			<hr>
 
 		</form>
 		<?php
 		
-		$user_obj = new User($con, $userLoggedIn);
-		echo $user_obj->getFirstAndLastName();
+		$post = new Post($con, $userLoggedIn);
+		$post->loadPostsFriends();
 		
 		?>
 	</div>
