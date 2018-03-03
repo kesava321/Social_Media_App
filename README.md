@@ -15,6 +15,6 @@ https://projects.cs.nott.ac.uk/psyku/Social_Media_App.git
 ###Kanban:
 https://trello.com/g54idssocial_media_app
 
-###Developlment Environment
+###Development Environment
 Local Xampp Web Server - Apache + MySQL
 Software: Adobe Dreamweaver CC 2018
