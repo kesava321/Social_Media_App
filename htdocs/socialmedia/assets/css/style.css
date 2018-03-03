@@ -13,7 +13,7 @@ body{
 	min-width: 1050px;
 	height: 40px;
 	background-color: #B3E8FF;
-	border-bottom: 0.25em solid #EDEDED;
+	border-bottom: 2px solid #00B0FD;
 	margin: 0 0 10px 0 ;
 	display: inline-flex;
 	position: fixed;
@@ -148,13 +148,48 @@ textarea:focus{
 	min-height: 75px;
 }
 
-.post_profile_pic{
+.post_profile_pic {
 	float: left;
 	margin-right: 7px;
 }
 
-.post_profile_pic img{
+.post_profile_pic img {
 	border-radius: 25px;
+}
+
+.profile_left {
+	top: -10px;
+	width: 17%;
+	max-width: 240px;
+	min-width: 130px;
+	height: 100%;
+	float: left;
+	position: relative;
+	background-color: #73B6E2; 
+	border-right: 10px solid #00B0FD;
+	color: #CBEAF8;
+	margin-right: 20px;
+}
+
+
+.profile_left img {
+	min-width: 80px;
+	width: 55%;
+	margin: 20px;
+	border: 5px solid #B3E8FF;
+	border-radius: 100px;
+}
+
+.profile_info {
+	display: list-item;
+	background-color: #106BF8;
+	width: 100%;
+	padding: 10px 0 10px 0;
+}
+
+.profile_info p {
+	margin: 0 0 0 20px;
+	word-wrap: break-word;
 }
 
 
