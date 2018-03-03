@@ -17,13 +17,14 @@ else{
 	<title>Welcome to SocialGroup</title>
 
 	<!-- Javascript -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+	
 	<script src="assets/js/bootstrap.js"></script>
 	<!-- allows reuse of existing symbols/buttons -->
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/bottstrap.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
@@ -36,7 +37,7 @@ else{
 		</div>
 
 		<nav>
-			<a href="#"> 
+			<a href="<?php echo $userLoggedIn; ?>"> 
 				 <?php echo $user['first_name']; ?>	 
 			</a>
 			<a href="index.php"> 
@@ -53,6 +54,9 @@ else{
 			</a>
 			<a href="#">
 				<i class="fa fa-cog fa-lg"></i> 
+			</a>
+			<a href="includes/handlers/logout.php">
+				<i class="fa fa-sign-out-alt fa-lg"></i> 
 			</a>
 		</nav>
 
