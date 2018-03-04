@@ -14,6 +14,20 @@ if(isset($_GET['profile_username'])){
 }
 
 
+if(isset($_POST['remove_friend'])){
+	$user = new User($con, $userLoggedIn);
+	$user->removeFriend($username);
+}
+
+if(isset($_POST['add_friend'])){
+	$user = new User($con, $userLoggedIn);
+	$user->sendRequest($username);
+}
+
+if(isset($_POST['respond _request'])){
+	header("Location: requests.php");
+}
+
  ?>
 
 	<style type="text/css">
@@ -36,13 +50,30 @@ if(isset($_GET['profile_username'])){
 		
 		</div>
 		
-		<form action="<?php echo $username; ?>">
+		<form action="<?php echo $username; ?>" method="POST">
 			<?php 
 			$profile_user_obj = new User($con, $username); 
 			if($profile_user_obj->isClosed()){
 				header("Location: user_closed.php");
-				
-				
+			}
+			
+			$logged_in_user_obj = new User($con, $userLoggedIn);
+			
+			//need to check if user is on own profile
+			if ($userLoggedIn != $username ) {
+				//add remove friend button on friends profile page
+				if($logged_in_user_obj->isFriend($username)){
+					echo '<input type="submit" name="remove_friend" class="danger" value="Remove Friend"><br>';
+				}
+				//add button for respond to friend request if not friens
+				else if ($logged_in_user_obj->didReceiveRequest($username)){
+					echo '<input type="submit" name="respond_request" class="warning" value="Respond to Request"><br>';
+				}
+				else if ($logged_in_user_obj->didSendRequest($username)){
+					echo '<input type="submit" name="" class="default" value="Request Sent"><br>';
+				}
+				else 
+					echo '<input type="submit" name="add_friend" class="success" value="Add Friend"><br>';
 			}
 		
 			?>

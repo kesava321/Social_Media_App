@@ -77,7 +77,7 @@ if(isset($_POST['post'])){
            $.ajax({
                url: "includes/handlers/ajax_load_posts.php",
                type: "POST",
-               data: "page=" + page + "&userLoggedIn=" + userLoggedIn,
+               data: "page=" + page + "&userLoggedIn=" + userLoggedIn,  //request comes from ajax call
                cache:false,
  
                success: function(response) {
