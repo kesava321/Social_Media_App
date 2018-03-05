@@ -14,6 +14,18 @@ else {
 
 if($user_to != "new") //if user is not new, then create a new user object out of the username we have here 
 	$user_to_obj = new User($con, $user_to);
+
+if(isset($_POST['post_message'])){
+
+	if(isset($_POST['message_body'])){
+		$body = mysqli_real_escape_string($con, $_POST['message_body']); //prepares a string to be used in a mysql statement - cancel all character that we don't need.
+		$date = date("Y-m-d H:i:s");
+		$message_obj->sendMessage($user_to, $body, $date);
+	}
+
+}
+
+
 ?>
 	
 	<div class="user_details column">
@@ -53,7 +65,6 @@ if($user_to != "new") //if user is not new, then create a new user object out of
  				else {
  					echo "<textarea name='message_body' id='message_textarea' placeholder='Write your message ...'></textarea>";
  					echo "<input type='submit' name='post_message' class='info' id='message_submit' value='Send'>";
-
  				}
 
  					?>
