@@ -245,3 +245,54 @@ textarea:focus{
 	color: #FFF;
 	background-color: #E74C3C;
 }
+
+
+#message_textarea {
+	width: 80%;
+	margin-right: 8px;
+	border-radius: 5px;
+	border: 1px solid #D3D3D3;
+	font-size: 12px;
+}
+
+#message_submit {
+	height: 41px;
+	width: 120px;
+	margin: 0;
+	position: absolute;
+	border: none;
+	background-color: #B3E8FF;
+	color: #2616B3;
+	border-radius: 5px; 
+	font-family:'Pacifico', sans-serif;
+	text-shadow: #73B6E2 0.5px 0.5px 0px;
+}
+
+.message {
+	border: 1px solid #000;
+	border-radius: 5px;
+	padding: 5px 10px;
+	display: inline-block;
+	color: #FFF;
+}
+.message#blue {
+	background-color: #3498DB;
+	border-color: #2980B9;
+	float: right;
+	margin-bottom: 5px;
+}
+
+.message#green {
+	background-color: #2ECC71;
+	border-color: #27AE60;
+	float: left;
+	margin-bottom: 5px;
+}
+
+.loaded_messages {
+	height: 65%;
+	min-height: 300px;
+	max-height: 400px;
+	overflow: scroll;
+	margin-bottom: 10px;
+}
