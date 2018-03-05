@@ -34,5 +34,27 @@ class Message {
 			$query = mysqli_query($this->con, "INSERT INTO messages VALUES('', '$user_to', '$userLoggedIn', '$body', '$date', 'no', 'no', 'no')");
 		}
 	}
+
+	public function getMessages($otherUser){
+		$userLoggedIn = $this->user_obj->getUsername();
+		$data = "";
+
+		//sets all openend values to yes is it it between these two users
+		$query = mysqli_query($this->con, "UPDATE messages SET opened='yes' WHERE user_to='$userLoggedIn' AND user_from='$otherUser'");
+
+		$get_message_query = mysqli_query($this->con, "SELECT * FROM messages WHERE (user_to='$userLoggedIn' AND user_from='$otherUser') OR (user_from='$userLoggedIn' AND user_to='$otherUser')");
+
+		//iterating through messsages
+		while($row = mysqli_fetch_array($get_message_query)) {
+			$user_to = $row['user_to'];
+			$user_from = $row['user_from'];
+			$body = $row['body'];
+		//conditional statement- if ($user_to == $userLoggedIn) true then do $div_top after question mark "<", if not true do "".
+			//different color of message for from and to user. 
+			$div_top = ($user_to == $userLoggedIn) ? "<div class='message' id='green'>" : "<div class='message' id='blue'>";
+			$data = $data . $div_top . $body . "</div><br><br>";
+		}
+		return $data;
+	}
 }
 ?>
