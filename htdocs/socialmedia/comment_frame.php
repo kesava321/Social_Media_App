@@ -167,7 +167,13 @@
 
 		}
 	}
-	?>
+
+else {
+	echo "<center><br><br>No Comments to show</center>";
+}
+
+?>
+
 	
 	
 </body>
