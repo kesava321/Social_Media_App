@@ -8,6 +8,12 @@ body{
 	background-color: #E6EAE8;
 }
 
+a {
+	color: #20AAE5;
+	top-text-decoration: none;
+
+}
+
 .top_bar{
 	width: 100%;
 	min-width: 1050px;
@@ -71,7 +77,24 @@ nav a:hover {
 	z-index: -1;
 }
 
+.row {
+	background-color: #fff;
+	padding: 10px;
+	border: 1px #D3D3D3;
+	border-radius: 5px;
+	box-shadow: 2px 2px 1px #D3D3D3;
+	z-index: -1;
+
+
+}
+
 .user_details {
+	width:250px;
+	float: left;
+	margin-bottom: 20px;
+}
+
+.news_details {
 	width:250px;
 	float: left;
 	margin-bottom: 20px;
@@ -89,19 +112,13 @@ nav a:hover {
 	margin-right: 5px;
 }
 
-.main_colum {
-	float: right;
-	width: 70%;
-	z-index: -1;
-	minheight: 160px;
-}
-
-.main_column{
+.main_column {
 	float: right;
 	width: 70%;
 	z-index: -1;
 	min-height: 160px;
 }
+
 
 .post_form{
 	width: 100%;
@@ -146,6 +163,7 @@ textarea:focus{
 	font-size: 15px;
 	padding: 0px 5px;
 	min-height: 75px;
+	cursor: pointer;
 }
 
 .post_profile_pic {
@@ -156,6 +174,45 @@ textarea:focus{
 .post_profile_pic img {
 	border-radius: 25px;
 }
+
+#comment_iframe {
+	max-height: 250px;
+	width: 100%;
+	color: #B3E8FF; 
+}
+
+.comment_section {
+	padding: 0 5px 5px 5px;
+}
+
+.comment_section img{
+	margin: 0 3px 3px 3px;
+	border-radius: 3px;
+}
+
+#comment_form textarea{
+	border-color: #D3D3D3;
+	width: 85%;
+	height: 35px;
+	border-radius: 5px;
+	color: #616060;
+	font-size: 14px;
+	margin: 3px 3px 3px 5px;
+}
+
+#comment_form input[type="submit"]{
+	border: none;
+	background-color: #20AAE5;
+	color: #156588;
+	border-radius: 5px;
+	width: 13%;
+	height: 35px;
+	margin-top: 3px;
+	position: absolute;
+	font-family:'Pacifico', sans-serif;
+	text-shadow: #73B6E2 0.5px 0.5px 0px;
+}
+
 
 .profile_left {
 	top: -10px;
@@ -296,3 +353,4 @@ textarea:focus{
 	overflow: scroll;
 	margin-bottom: 10px;
 }
+

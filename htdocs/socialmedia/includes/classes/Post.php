@@ -110,24 +110,26 @@ class Post {
 						$profile_pic = $user_row['profile_pic'];
 						
 						?>
-						<script>//how you know which comments to show
-							function toggle<?php echo $id; ?>(/*event*/){//name of id it will get
-								//var target = $(event.target);
-     
-        						//if (!target.is('a') && !target.is('button')) {
-					
-
-								var element = document.getElementById("toggleComment<?php echo $id; ?>");
-
-								if(element.style.display == "block")
-									element.style.display = "none";
-								else
-									element.style.display = "block";
-							}
-
 						
 
-						</script>
+					<script> 
+					    function toggle<?php echo $id; ?>(){//event
+					            
+					        //var target = $(event.target);
+					     
+					        //if (!target.is('a') && !target.is('button')) {
+					           var element = document.getElementById("toggleComment<?php echo $id; ?>");
+							if(element.style.display == "block"){
+					                element.style.display = "none";
+					          }  else {
+					                element.style.display = "block";
+					          }
+					        }
+					                                    
+					 
+					 
+					</script>
+						
 						<?php
 						
 						
@@ -205,7 +207,8 @@ class Post {
 											  <img src='$profile_pic' width='50'>
 									   </div>
 									   <div class='posted_by' style='color:#ACACAC;'>
-											<a href='$added_by'> $first_name $last_name </a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message;
+											<a href='$added_by'> $first_name $last_name </a> 
+											$user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message;
 											</div>
 											<div id ='post_body'>
 												$body
@@ -214,7 +217,8 @@ class Post {
 
 								</div>
 								<div class='post_comment' id='toggleComment$id' style='display:none;'> 
-									<iframe scr='comment_frame.php?post_id=$id' id='comment_iframe'></iframe>
+									<iframe src='comment_frame.php?post_id=$id' id='comment_iframe' frameborder='0'></iframe>
+
 								</div>
 								<hr>";
 					}
@@ -222,10 +226,12 @@ class Post {
 				}//End while loop
 			
 				if($count > $limit) //holds value of page and number of posts if false
-					$str .="<input type='hidden' class='nextPage' value='" . ($page + 1) . "'><input type='hidden' class='noMorePosts' value='false'>";
+					$str .="<input type='hidden' class='nextPage' value='" . ($page + 1) . "'>
+					<input type='hidden' class='noMorePosts' value='false'>";
 				else
 					//set to true if it didn't reach the full 10 posts.
-					$str .="<input type='hidden' class='noMorePosts' value='true'><p style='text-align: centre;'> No more posts to show! </p>";
+					$str .="<input type='hidden' class='noMorePosts' value='true'>
+					<p style='text-align: centre;'> No more posts to show! </p>";
 		
 			}
 		echo $str;

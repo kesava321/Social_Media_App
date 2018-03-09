@@ -1,7 +1,7 @@
 <?php 
 include("includes/header.php");
-include("includes/classes/User.php");
-include("includes/classes/Post.php");
+
+
 
 //if post button has been pressed create an instance of that class
 if(isset($_POST['post'])){
@@ -40,10 +40,48 @@ if(isset($_POST['post'])){
 		
 		<div class="posts_area"></div>
 		<img id="loading" src="assets/images/icons/loading.gif">
-		
-		
+	
 	</div>
 
+	
+
+	<div class="news_details column">
+	<?php echo "Featured News:" . "<br>"; ?>
+		
+		<?php echo $user['news_title']; ?>
+		<img src="<?php echo $user['news_pic']; ?>">
+		<?php echo $user['news_text']; ?>
+		<?php echo $user['news_link']; ?>
+ 	
+		<form class="news_form" action="index.php" method="POST">
+
+			<input type="radio" name="real" id="real_button" value="Real"> Real<br>
+			<input type="radio" name="fake" id="fake_button" value="Fake"> Fake<br>
+			<hr>
+
+		<?php echo $user['news_title']; ?>
+		<img src="<?php echo $user['news_pic']; ?>">
+		<?php echo $user['news_text']; ?>
+		<?php echo $user['news_link']; ?>
+
+		<br><input type="radio" name="real" id="real_button" value="Real"> Real<br>
+		<input type="radio" name="fake" id="fake_button" value="Fake"> Fake<br>
+		<hr>
+
+		<?php echo $user['news_title']; ?>
+		<img src="<?php echo $user['news_pic']; ?>">
+		<?php echo $user['news_text']; ?>
+		<?php echo $user['news_link']; ?>
+
+		<br><input type="radio" name="real" id="real_button" value="Real"> Real<br>
+		<input type="radio" name="fake" id="fake_button" value="Fake"> Fake<br>
+
+		</form>
+	
+	
+	</div>
+
+	
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
 <script>
@@ -111,8 +149,6 @@ if(isset($_POST['post'])){
    });
  
    </script>
-
-
 
 
  </div>
