@@ -95,5 +95,5 @@ if(isset($_POST['post_message'])){
  				<?php echo $message_obj->getConversations(); ?>
 			</div>
 			<br>
-			<a href="messages.php?u=new">New Message></a>
+			<a href="messages.php?u=new">New Message</a>
  		</div>
