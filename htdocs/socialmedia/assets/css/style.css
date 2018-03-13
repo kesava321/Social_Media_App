@@ -178,7 +178,7 @@ textarea:focus{
 #comment_iframe {
 	max-height: 250px;
 	width: 100%;
-	color: #B3E8FF; 
+	margin-top: 5px;
 }
 
 .comment_section {
@@ -211,6 +211,13 @@ textarea:focus{
 	position: absolute;
 	font-family:'Pacifico', sans-serif;
 	text-shadow: #73B6E2 0.5px 0.5px 0px;
+}
+
+.newsfeedPostOptions{
+	padding: 0px;
+	text-decoration: none;
+	color: #20AAE5;
+	border: none;
 }
 
 
@@ -352,5 +359,50 @@ textarea:focus{
 	max-height: 400px;
 	overflow: scroll;
 	margin-bottom: 10px;
+}
+
+.loaded_conversations {
+	max-height: 216px;
+	overflow: scroll;
+} 
+
+.user_found_messages {
+	border-bottom: 1px solid #D3D3D3;
+	padding: 8px 8px 10px 8px;
+}
+
+.user_found_messages:hover {
+	background-color: #D3D3D3;
+}
+
+.user_found_messages img {
+	height: 35px;
+	float: left;
+}
+
+#grey {
+	color: #8C8C8C;
+}
+
+.newsfeedPostOptions iframe{
+	border: 0px;
+	height: 17px;
+	width: 120px;
+}
+
+.comment_like {
+	background-color: transparent;
+	border: none;
+	font-size: 14px;
+	color: #3498DB;
+	padding: 0;
+	height: auto;
+	width: auto;
+	margin: 0;
+}
+
+.like_value {
+	display: inline;
+	font-size: 14px;
 }
 
