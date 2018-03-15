@@ -1,7 +1,8 @@
 $(document).ready(function(){
 
+
 	//Button for profile post
-	$('#submit_profile').click(function(){
+	$('#submit_profile_post').click(function(){
 
 		$.ajax({
 			type: "POST",
@@ -19,7 +20,7 @@ $(document).ready(function(){
 
 });
 
-function getUser(value, user) {
+function getUsers(value, user) {
 	$.post("includes/handlers/ajax_friend_search.php", {query:value, userLoggedIn:user}, function (data) {
 		$(".results").html(data);
 		
