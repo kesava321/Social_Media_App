@@ -23,23 +23,23 @@ if($query != ""){
 		$user = new User($con, $userLoggedIn);
 
 		if($row['username'] != $userLoggedIn) {
-			$mutal_friends = $user->getMutalFriends($row['username']) . " friends in common";
+			$mutual_friends = $user->getMutualFriends($row['username']) . " friends in common";
 		}
 		else {
-			$mutal_friends = "";
+			$mutual_friends = "";
 		}
 
 		if($user->isFriend($row['username'])){
 			echo "<div class='resultDisplay'>
-					<a href='messages.php?u='" . $row['username'] . "' style='color: #000'>
+					<a href='messages.php?u=" . $row['username'] . "' style='color: #000'>
 						<div class='liveSearchProfilePic'>
-							<img src='" . $row['profile_pic'] . "'
+							<img src='" . $row['profile_pic'] . "'>
 						</div>
 
 						<div class='liveSearchText'>
 							".$row['first_name'] . " " . $row['last_name']. "
-							<p>". $row['username'] . "</p>
-							<p id='grey'>".$mutal_friends . "</p>
+							<p style='margin: 0;'>". $row['username'] . "</p>
+							<p id='grey'>".$mutual_friends . "</p>
 						</div>
 					</a>
 					</div>";

@@ -76,7 +76,7 @@ class Post {
 					else {
 						$user_to_obj = new User($this->con, $row['user_to']);
 						$user_to_name = $user_to_obj->getFirstAndLastName();
-						$user_to = "to <a href='" . $row['uesr_to'] . "'>" . $user_to_name . "</a>"; 
+						$user_to = "to <a href='" . $row['user_to'] . "'>" . $user_to_name . "</a>"; 
 							//return a link to whoever the user is, to the profile page  and show first and last name.
 					}
 
@@ -102,6 +102,11 @@ class Post {
 						else {
 							$count++;
 						}
+
+						if($userLoggedIn == $added_by)
+							$delete_button = "<button class='delete_button btn-danger' id='post$id'>X</button>";
+						else
+							$delete_button = "";
 
 						$user_details_query = mysqli_query($this->con, "SELECT first_name, last_name, profile_pic FROM users WHERE username='$added_by'");
 						$user_row = mysqli_fetch_array($user_details_query);
@@ -210,7 +215,9 @@ class Post {
 									   </div>
 									   <div class='posted_by' style='color:#ACACAC;'>
 											<a href='$added_by'> $first_name $last_name </a> 
-											$user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message;
+											$user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message
+											$delete_button
+
 											</div>
 											<div id ='post_body'>
 												$body
@@ -223,14 +230,38 @@ class Post {
 												Comments($comments_check_num)&nbsp;&nbsp;&nbsp;
 												<iframe src='like.php?post_id=$id' scrolling='no'></iframe>
 											</div>
+											
+										</div>
 
-								</div>
-								<div class='post_comment' id='toggleComment$id' style='display:none;'> 
-									<iframe src='comment_frame.php?post_id=$id' id='comment_iframe' frameborder='0'></iframe>
-
-								</div>
-								<hr>";
+										<div class='post_comment' id='toggleComment$id' style='display:none;'> 
+											<iframe src='comment_frame.php?post_id=$id' id='comment_iframe' frameborder='0'></iframe>
+										</div>
+										<hr>";
 					}
+
+
+					?>
+					<script>
+						
+						$(document).ready(function() {
+							$('#post<?php echo $id; ?>').on('click', function() {
+								bootbox.confirm("Are you sure you want to delete this post?", function(result){
+
+									$.post("includes/form_handlers/delete_post.php?post_id=<?php echo $id; ?>", {result:result});
+
+									if(result)
+										location.reload();
+								});
+							});
+
+
+
+						});
+
+
+					</script>
+
+					<?php
 
 				}//End while loop
 			
