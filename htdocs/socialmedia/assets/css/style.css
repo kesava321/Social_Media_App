@@ -23,6 +23,7 @@ a {
 	margin: 0 0 10px 0 ;
 	display: inline-flex;
 	position: fixed;
+	z-index: 10;
 
 }
 
@@ -116,7 +117,7 @@ nav a:hover {
 	float: right;
 	width: 70%;
 	z-index: -1;
-	min-height: 160px;
+	min-height: 170px;
 }
 
 
@@ -421,4 +422,57 @@ textarea:focus{
 	float: left;
 	width: 70px;
 	z-index: -1;
+}
+
+.profile_info_bottom{
+	margin: 10 0 0 7px;
+}
+
+.resultDisplay{
+	padding: 5px 5px 0 5px;
+	height: 60px;
+	border-bottom: 1px solid #D3D3D3;
+}
+
+.resultDisplay a {
+	float: none;
+}
+
+.resultDisplay:hover {
+	background-color: #EBEBEB;
+	text-decoration: none;
+}
+
+.liveSearchProfilePic img {
+	height: 50px;
+	border-radius: 25px;
+	margin: 1px 12px 0 2px;
+	float: left;
+}
+
+.liveSearchText{
+	background-color: transparent; 
+	color: #1E96CA;
+}
+
+.liveSearchText p{
+	margin-left: 10px;
+	font-size: 12px;
+}
+
+.tab-content {
+	margin-top: 25px;
+}
+
+
+.dropdown_data_window {
+	background-color: #FFF;
+	border: 1px solid #DADADA;
+	border-radius: 0 0 8px 8px;
+	border-top: none;
+	width: 300px;
+	position: absolute;
+	right: 10px;
+	top: 40px;
+	overflow: scroll;
 }
