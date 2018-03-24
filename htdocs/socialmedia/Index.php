@@ -46,44 +46,33 @@ if(isset($_POST['post'])){
 	
 
 	<div class="news_details column">
-	<?php echo "Featured News:" . "<br>"; ?>
-		
-		<?php echo $user['news_title']; ?>
-		<img src="<?php echo $user['news_pic']; ?>">
-		<?php echo $user['news_text']; ?>
-		<?php echo $user['news_link']; ?>
- 	
-		<form class="news_form" action="index.php" method="POST">
 
-			<input type="radio" name="real" id="real_button" value="Real"> Real<br>
-			<input type="radio" name="fake" id="fake_button" value="Fake"> Fake<br>
-			<hr>
 
-		<?php echo $user['news_title']; ?>
-		<img src="<?php echo $user['news_pic']; ?>">
-		<?php echo $user['news_text']; ?>
-		<?php echo $user['news_link']; ?>
+<?php	
+$sql = "SELECT * FROM news";
+$result = $con->query($sql);
 
-		<br><input type="radio" name="real" id="real_button" value="Real"> Real<br>
-		<input type="radio" name="fake" id="fake_button" value="Fake"> Fake<br>
-		<hr>
 
-		<?php echo $user['news_title']; ?>
-		<img src="<?php echo $user['news_pic']; ?>">
-		<?php echo $user['news_text']; ?>
-		<?php echo $user['news_link']; ?>
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "News id: " . $row["id"]. " - Title: " . $row["news_title"]. " " . "<br>". $row["news_pic"]. " - Text: ". $row["news_text"]. "<br>"." - Link: ". $row["news_link"]. "<br>".$row["news_score"] ."<br><br>"; 
+    }
 
-		<br><input type="radio" name="real" id="real_button" value="Real"> Real<br>
-		<input type="radio" name="fake" id="fake_button" value="Fake"> Fake<br>
 
-		</form>
-	
-	
+
+} else {
+    echo "0 results";
+}
+
+?>
+
+
 	</div>
 
 	
 	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+
 <script>
    $(function(){
  
