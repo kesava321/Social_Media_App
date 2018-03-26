@@ -500,6 +500,8 @@ class Post {
 	public function getSinglePost($post_id){
 
 		$userLoggedIn = $this->user_obj->getUsername();		
+
+		$opened_query = mysqli_query($this->con, "UPDATE notifications SET opened='yes' WHERE user_to='$userLoggedIn' AND link LIKE '%=$post_id'");
 		
 		
 		$str = ""; //String to return
@@ -709,5 +711,5 @@ class Post {
 		echo $str;
 	}
 	}
-	
+
 ?>
