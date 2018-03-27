@@ -573,6 +573,13 @@ textarea:focus{
 	float: right;
 }
 
+.searchPageFriendButtons input[type="submit"]{
+	border: none;
+	padding: 7px 12px;
+	border-radius: 5px;
+	color: #FFF;
+}
+
 .result_profile_pic{
 	float: left;
 	margin-right: 10px;
@@ -581,3 +588,4 @@ textarea:focus{
 #search_hr {
 	margin-bottom: 0px;
 }
+
