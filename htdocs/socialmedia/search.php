@@ -56,24 +56,44 @@ else{
 				$button = "";
 				$mutual_friends = "";
 
-				if($user['username'] != $row['username']){
+				if($user['username'] != $row['username']) {
 
 					//Generatee button depending on friendship status
 					if ($user_obj->isFriend($row['username']))
 						$button = "<input type='submit' name='" . $row['username']. "' class='danger' value='Remove Friend'>";
-					else if($user_obj->didReceiveRequest($row['username'])){
+					else if($user_obj->didReceiveRequest($row['username']))
 						$button = "<input type='submit' name='" . $row['username']. "' class='warning' value='Respond to request'>";
-					else if($user_obj->didSendRequest($row['username'])
+					else if($user_obj->didSendRequest($row['username']))
 						$button = "<input class='default' value='Request Sent'>";
 					else
 						$button = "<input type='submit' name='" . $row['username']. "' class='success' value='Add Friend'>";
-					$mutual_friends = $user_obj->getMutualFriends($row['username'] . " friends in common");
+					$mutual_friends = $user_obj->getMutualFriends($row['username']) . " friends in common";
 
 					//Button forms
 
-
 				}
-			}
+
+				echo "<div class='search_result'>
+							<div class='searchPageFriendButtons'>
+								<form action='' method='POST'>
+									" . $button . "
+									<br>
+								</form>
+							</div>
+
+							<div clas='result_profile_pic'>
+								<a href='" . $row['username'] ."'><img src='" . $row['profile_pic']  . "' style='height: 100px;'></a>
+							</div>
+
+								<a href='" . $row['username'] ."'> " . $row['first_name'] . " " . $row['last_name'] . " 
+								<p id='grey'" . $row['username']."</p>
+								</a>
+								<br>
+								" . $mutual_friends . "<br>
+
+						</div>
+						<hr>";
+			} //End while
 		}
 
 
