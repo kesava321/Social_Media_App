@@ -48,7 +48,7 @@ else{
 				echo mysqli_num_rows($usersReturnedQuery) . " results found: <br><br>";
 
 			echo "<p id='grey'>Try searching for:</p>";
-			echo "<a href='search.php?q=" . $query ."&type=name'>Names</a>, <a href='search.php?q=" . $query ."&type=username'>Usernames</a><br><br><hr>";
+			echo "<a href='search.php?q=" . $query ."&type=name'>Names</a>, <a href='search.php?q=" . $query ."&type=username'>Usernames</a><br><br><hr id='search_hr'>";
 			
 			while($row = mysqli_fetch_array($usersReturnedQuery)){
 				$user_obj = new User ($con, $user['username']);
@@ -81,7 +81,7 @@ else{
 								</form>
 							</div>
 
-							<div clas='result_profile_pic'>
+							<div class='result_profile_pic'>
 								<a href='" . $row['username'] ."'><img src='" . $row['profile_pic']  . "' style='height: 100px;'></a>
 							</div>
 
@@ -92,7 +92,7 @@ else{
 								" . $mutual_friends . "<br>
 
 						</div>
-						<hr>";
+						<hr id='search_hr'>";
 			} //End while
 		}
 

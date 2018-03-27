@@ -562,3 +562,22 @@ textarea:focus{
 .search_results_footer a{
 	color: #FFF;
 }
+
+
+.search_result{
+	padding: 10px;
+	height: 100px;
+}
+
+.searchPageFriendButtons{
+	float: right;
+}
+
+.result_profile_pic{
+	float: left;
+	margin-right: 10px;
+}
+
+#search_hr {
+	margin-bottom: 0px;
+}
