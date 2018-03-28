@@ -60,4 +60,10 @@ if(isset($_POST['update_details'])){
 		$password_message = "";
 	}
 
+	///////////////////////////////////////////////
+
+	if(isset($_POST['close_account'])) {
+		header("Location: close_account.php");
+	}
+
 ?>
