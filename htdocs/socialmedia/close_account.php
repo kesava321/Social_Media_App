@@ -23,8 +23,8 @@ if(isset($_POST['close_account'])) {
 	You can reopen your account at anytime by simply logging in.<br><br>
 
 	<form action="close_account.php" method="POST">
-		<input type="submit" name="close_account" id="close_account" value="Yes! Close it!">
-		<input type="submit" name="cancel" id="update_details" value="No! Don't close it!">
+		<input type="submit" name="close_account" id="close_account" value="Yes! Close it!" class="danger settings_submit">
+		<input type="submit" name="cancel" id="update_details" value="No! Don't close it!" class="info settings_submit">
 	</form>
 
 </div>
