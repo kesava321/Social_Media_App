@@ -43,10 +43,33 @@ if(isset($_POST['post'])){
 	
 	</div>
 
-	
+
+
+    
+    <div class="trends column">
+      <h4>Trending Words:</h4>
+      <?php
+      $query = mysqli_query($con, "SELECT * FROM trends ORDER BY hits DESC LIMIT 10");
+
+      foreach ($query as $row) {
+
+          $word = $row['title'];
+          $word_dot = strlen($word) >= 14 ? "..." : "";
+
+          $trimmed_word = str_split($word,14);
+          $trimmed_word = $trimmed_word[0];
+
+          echo "<div style'padding: 1px'>";
+          echo $trimmed_word . $word_dot;
+          echo "<br></div>";
+
+
+      }
+      ?>
+	</div>
 
 	<div class="news_details column">
-
+    <h4>Featured News:</h4>
 
 <?php	
 $sql = "SELECT * FROM news";

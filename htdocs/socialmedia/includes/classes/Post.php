@@ -14,7 +14,8 @@ class Post {
 				$body = mysqli_real_escape_string($this->con, $body); //Escapes single quote, so query does not act on it.
 				$check_empty = preg_replace('/\s+/', '', $body); //Deletes all spaces
 				
-				//Insert youtube link post embed code here
+				if($check_empty != "") {
+				
 			
 					//Current date and time
 					$date_added = date("Y-m-d H:i:s");
@@ -68,9 +69,22 @@ class Post {
 
              }
 
+		}
+	}
 
-				}
-			}
+	public function calculateTrend($term) {
+
+		if($term != '') {
+			$query = mysqli_query($this->con, "SELECT * FROM trends WHERE title='$term'");
+
+			if(mysqli_num_rows($query) == 0)
+				$insert_query = mysqli_query($this->con, "INSERT INTO trends(title,hits) VALUES('$term','1')");
+			else 
+				$insert_query = mysqli_query($this->con, "UPDATE trends SET hits=hits+1 WHERE title='$term'");
+		}
+
+	}
+
 
 
 	public function loadPostsFriends($data, $limit){

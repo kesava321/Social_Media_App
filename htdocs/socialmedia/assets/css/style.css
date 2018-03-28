@@ -95,6 +95,12 @@ nav a:hover {
 	margin-bottom: 20px;
 }
 
+.trends {
+	width:250px;
+	float: left;
+	margin-bottom: 20px;
+}
+
 .news_details {
 	width:250px;
 	float: left;
