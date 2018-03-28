@@ -9,12 +9,12 @@ class Post {
 	}
 
 		
-	public function submitPost($body, $user_to){
+	public function submitPost($body, $user_to, $imageName){
 				$body = strip_tags($body); //removes html tags
 				$body = mysqli_real_escape_string($this->con, $body); //Escapes single quote, so query does not act on it.
 				$check_empty = preg_replace('/\s+/', '', $body); //Deletes all spaces
 				
-				if($check_empty != "") {
+				if($check_empty != ""  || $imageName != "") {
 				
 			
 					//Current date and time
@@ -28,7 +28,7 @@ class Post {
 					}
 					
 					//Insert post
-					$query = mysqli_query($this->con, "INSERT INTO posts VALUES('', '$body', '$added_by', '$user_to', '$date_added', 'no', 'no', '0')");
+					$query = mysqli_query($this->con, "INSERT INTO posts VALUES('', '$body', '$added_by', '$user_to', '$date_added', 'no', 'no', '0', '$imageName')");
 					$returned_id = mysqli_insert_id($this->con);
 					
 					//Insert notification
@@ -112,6 +112,7 @@ class Post {
 					$body = $row['body'];
 					$added_by = $row['added_by'];
 					$date_time = $row['date_added'];
+					$imagePath = $row['image'];
 
 					//Prepare user_to string so it can be included even if not posted to a user
 					if($row['user_to'] == "none"){
@@ -253,6 +254,15 @@ class Post {
 							}
 						}
 
+						if($imagePath != "") {
+						$imageDiv = "<div class='postedImage'>
+										<img src='$imagePath'>
+									</div>";
+						}
+						else {
+						$imageDiv = "";
+						}
+
 						$str .= "<div class='status_post' onClick='javascript:toggle$id()'>
 									   <div class='post_profile_pic'>
 											  <img src='$profile_pic' width='50'>
@@ -266,6 +276,7 @@ class Post {
 											<div id ='post_body'>
 												$body
 												<br>
+												$imageDiv
 												<br>
 												<br>
 											</div>
