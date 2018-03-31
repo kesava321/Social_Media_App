@@ -9,8 +9,9 @@ require 'includes/form_handlers/login_handler.php';
 <html>
 <head>
 	<title>Welcome to Social Group</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+	
 	<link rel="stylesheet" type="text/css" href="assets/css/register_style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="assets/js/register.js"></script>
 
 </head>

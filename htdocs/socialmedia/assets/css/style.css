@@ -11,7 +11,6 @@ body{
 a {
 	color: #20AAE5;
 	top-text-decoration: none;
-
 }
 
 .top_bar{
@@ -57,7 +56,8 @@ nav a{
 
 nav a:hover {
 	border-bottom: 7px solid #1086BA;
-	color: #fff;
+	position: bottom;
+	color: #000080;
 }
 
 .wrapper {
@@ -105,6 +105,7 @@ nav a:hover {
 	width:250px;
 	float: left;
 	margin-bottom: 20px;
+	object-position: left;
 }
 
 .user_details_left_right {
@@ -123,7 +124,7 @@ nav a:hover {
 	float: right;
 	width: 70%;
 	z-index: -1;
-	min-height: 170px;
+	min-height: 600px;
 }
 
 
@@ -518,7 +519,7 @@ textarea:focus{
 }
 
 .search{
-	margin: 8px 0 0 15%;
+	margin: 8px 0 0 22.5%;
 }
 
 .search #search_text_input{
@@ -553,7 +554,8 @@ textarea:focus{
 	border: 1px solid #DADADA;
 	border-bottom: none;
 	border-top: none;
-	margin-top 21px;
+	margin-top: 21px;
+
 }
 
 .search_results_footer{
@@ -631,4 +633,24 @@ textarea:focus{
 	max-width: 100%;
 	display: block;
 	margin: 5px auto;
+}
+
+.news {
+	width: 100%;
+	margin: 10px auto;
+	border: 1px solid #cbcbcb;
+	padding: 5px 10px 0px 10px;
+}
+
+.fa-thumbs-up, .fa-thumbs-o-up {
+	transform: rotateX(180deg);
+	font-size: 1.3em;
+	color: red;
+}
+
+
+.fa-thumbs-down, .fa-thumbs-o-down {
+	transform: rotateX(180deg);
+	font-size: 1.3em;
+	color: blue;
 }

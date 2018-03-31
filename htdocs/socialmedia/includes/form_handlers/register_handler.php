@@ -45,7 +45,7 @@ if (isset($_POST['register_button'])){
 	$password = strip_tags($_POST['reg_password']); //remove html tags
 	$password2 = strip_tags($_POST['reg_password2']); //remove html tags
 
-	$date = date ("Y-a-d"); //current date
+	$date = date ("Y-m-d"); //current date
 
 	if($em == $em2){
 		//Check if emial is in valid format
@@ -108,13 +108,20 @@ if (isset($_POST['register_button'])){
 		}
 
 		//Profile picture assignment
-		$rand = rand(1,2); //Random number between 1 nd 2
+		$rand = rand(1,5); //Random number between 1 nd 6
 
-		if($rand = 1)
+		if($rand == 1)
 		$profile_pic = "assets/images/profile_pics/defaults/blue_default.png";
-		else if($rand = 2)
+		else if($rand == 2)
 		$profile_pic = "assets/images/profile_pics/defaults/green_default.png";
-	
+		else if($rand == 3)
+		$profile_pic = "assets/images/profile_pics/defaults/red_default.png";
+		else if($rand == 4)
+		$profile_pic = "assets/images/profile_pics/defaults/yellow_default.png";
+		else if($rand == 5)
+		$profile_pic = "assets/images/profile_pics/defaults/purple_default.png";
+		else if($rand == 6)
+		$profile_pic = "assets/images/profile_pics/defaults/orange_default.png";
 
 		//send values into database
 		$query = mysqli_query($con, "INSERT INTO users VALUES ('', '$fname', '$lname', '$username', '$em', '$password', '$date', '$profile_pic', '0', '0', 'no', ',')"); 

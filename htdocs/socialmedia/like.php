@@ -26,6 +26,7 @@
 	require 'config/config.php';
 	include("includes/classes/User.php");
 	include("includes/classes/Post.php");
+	include("includes/classes/Notification.php");
 
 	if (isset($_SESSION['username'])) {
 		$userLoggedIn = $_SESSION['username'];
@@ -62,8 +63,8 @@
 
 		//Insert notification
 		if($user_liked != $userLoggedIn) {
-				$notification = new Notification($this->con, $userLoggedIn);
-				$notification->insertNotification($post_id, $user_to, "like");
+				$notification = new Notification($con, $userLoggedIn);
+				$notification->insertNotification($post_id, $user_liked, "like");
 		}
 
 	}
@@ -83,12 +84,12 @@
 
 	if($num_rows > 0) {
 		echo '<form action="like.php?post_id=' . $post_id . '" method="POST">
-				<input type="submit" class="comment_like" name="unlike_button" value="Unlike">
+				<input type="submit" class="comment_like" name="unlike_button" value="Unlike" >
 				<div class="like_value"> 
 					'. $total_likes . ' Likes
 				</div>
 			</form>
-		';
+		'; 
 
 	}
 	else {

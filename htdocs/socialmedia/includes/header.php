@@ -4,11 +4,10 @@ include("includes/classes/User.php");
 include("includes/classes/Post.php");
 include("includes/classes/Message.php");
 include("includes/classes/Notification.php");
-include("includes/classes/News.php");
 
 if (isset($_SESSION['username'])) {
 	$userLoggedIn = $_SESSION['username'];
-	$user_details_query = mysqli_query($con, "SELECT * FROM users, news WHERE username='$userLoggedIn'");
+	$user_details_query = mysqli_query($con, "SELECT * FROM users WHERE username='$userLoggedIn'");
 	$user = mysqli_fetch_array($user_details_query);
 	
 
@@ -26,6 +25,8 @@ else{
 	<title>Welcome to SocialGroup</title>
 	
 	<!-- Javascript -->
+	<script defer src="https://use.fontawesome.com/releases/[VERSION]/js/all.js"></script>
+  	<script defer src="https://use.fontawesome.com/releases/[VERSION]/js/v4-shims.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
 	<script src="assets/js/bootstrap.js"></script>
 	<script src="assets/js/bootbox.min.js"></script>
@@ -37,7 +38,9 @@ else{
 	<!-- allows reuse of existing symbols/buttons -->
 
 	<!-- CSS -->
+	
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/jquery.Jcrop.css" type="text/css"/>
@@ -119,7 +122,7 @@ else{
 				<i class="fa fa-cog fa-lg"></i> 
 			</a>
 			<a href="includes/handlers/logout.php">
-				<i class="fa fa-sign-out-alt fa-lg"></i> 
+				<i class="fas fa-sign-out-alt fa-lg"></i> 
 			</a>
 		</nav>
 

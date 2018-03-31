@@ -79,24 +79,24 @@ if(isset($_POST['post_message'])){
 			if ($userLoggedIn != $username ) {
 				//add remove friend button on friends profile page
 				if($logged_in_user_obj->isFriend($username)){
-					echo '<input type="submit" name="remove_friend" class="danger" value="Remove Friend"><br>';
+					echo '<input type="submit" name="remove_friend" class="danger settings_submit" value="Remove Friend"><br>';
 				}
 				//add button for respond to friend request if not friens
 				else if ($logged_in_user_obj->didReceiveRequest($username)){
-					echo '<input type="submit" name="respond_request" class="warning" value="Respond to Request"><br>';
+					echo '<input type="submit" name="respond_request" class="warning settings_submit" value="Respond to Request"><br>';
 				}
 				else if ($logged_in_user_obj->didSendRequest($username)){
-					echo '<input type="submit" name="" class="default" value="Request Sent"><br>';
+					echo '<input type="submit" name="" class="default settings_submit" value="Request Sent"><br>';
 				}
 				else 
-					echo '<input type="submit" name="add_friend" class="success" value="Add Friend"><br>';
+					echo '<input type="submit" name="add_friend" class="success settings_submit" value="Add Friend"><br>';
 			}
 		
 			?>
 			
 	 	</form>
 
-	 	<input type="submit" class="deep_blue" data-toggle="modal" data-target="#post_form" value="Post Something">
+	 	<input type="submit" class="deep_blue settings_submit" data-toggle="modal" data-target="#post_form" value="Post Something">
 
 	 	<?php
 	 	if($userLoggedIn != $username){

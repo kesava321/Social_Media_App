@@ -107,35 +107,136 @@ if(isset($_POST['post'])){
       ?>
 	</div>
 
+
 	<div class="news_details column">
     <h4>Featured News:</h4>
+<?php
+if (isset($_POST['liked'])) {
+    $news_id = $_POST['news_id'];
+    $result = mysqli_query($con, "SELECT * FROM news WHERE id=$news_id");
+    $row = mysqli_fetch_array($result);
+    $n = $row['fakes'];
 
-<?php	
-$sql = "SELECT * FROM news";
-$result = $con->query($sql);
+    mysqli_query($con, "INSERT INTO fakes (user_id, news_id) VALUES (1, $news_id)");
+    mysqli_query($con, "UPDATE news SET fakes=$n+1 WHERE id=$news_id");
 
+    echo $n+1;
+    exit();
+  }
+  if (isset($_POST['unliked'])) {
+    $news_id = $_POST['news_id'];
+    $result = mysqli_query($con, "SELECT * FROM news WHERE id=$news_id");
+    $row = mysqli_fetch_array($result);
+    $n = $row['fakes'];
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "News id: " . $row["id"]. " - Title: " . $row["news_title"]. " " . "<br>". $row["news_pic"]. " - Text: ". $row["news_text"]. "<br>"." - Link: ". $row["news_link"]. "<br>".$row["news_score"] ."<br><br>"; 
-    }
+    mysqli_query($con, "DELETE FROM fakes WHERE news_id=$news_id AND user_id=1");
+    mysqli_query($con, "UPDATE news SET fakes=$n-1 WHERE id=$news_id");
+    
+    echo $n-1;
+    exit();
+  }
 
-
-
-} else {
-    echo "0 results";
-}
-
+  // Retrieve news from the database
+  $news = mysqli_query($con, "SELECT * FROM news WHERE fakes<=10 ORDER BY fakes ASC LIMIT 0,5 ");
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mark news article as fake</title>
+</head>
+<body>
+  <!-- display posts gotten from the database  -->
+    <?php while ($row = mysqli_fetch_array($news)) { ?>
+
+      <div class="news">
+        <?php 
+
+        $news_title = $row['news_title'];
+        $news_text = $row['news_text']; 
+        $news_link = $row['news_link']; 
+        $news_pic = $row['news_pic']; 
+        echo "<p> <font color=blue size='4pt'></font> <font color=black size='2pt'><strong>$news_title</strong></font></p>";
+        ?><img src="<?php echo $news_pic;?>" style="border-width: 10px; width:100px;"><?php
+        echo "<p> <font color=blue size='4pt'></font> <font color=black size='2pt'>$news_text</font></p>";
+        echo "<a href='".$news_link."'>Link to News Article</a>";
+
+        ?>
+
+        <div style="padding: 2px; margin-top: 5px;">
+        <?php 
+          // determine if user has already liked this post
+          $results = mysqli_query($con, "SELECT * FROM fakes WHERE news_id=".$row['id']."");
+
+          if (mysqli_num_rows($results)): ?>
+            <!-- user already likes post -->
+            <span class="unlike fa fa-thumbs-down" data-id="<?php echo $row['id']; ?>"></span> 
+            <span class="like fa fa-thumbs-up" data-id="<?php echo $row['id']; ?>"></span> 
+          <?php else: ?>
+            <!-- user has not yet liked post -->
+            <span class="unlike fa fa-thumbs-down" data-id="<?php echo $row['id']; ?>"></span> 
+            <span class="like fa fa-thumbs-up" data-id="<?php echo $row['id']; ?>"></span> 
+          <?php endif ?>
+         
+          <span class="likes_count"><?php echo $row['fakes']; ?> Users marked as fake</span>
+        </div>
+      </div>
 
 
-	</div>
 
-	
-	
+    <?php } ?>
 
+
+<!-- Add Jquery to page -->
+<script src="jquery.min.js"></script>
 <script>
+  $(document).ready(function(){
+    // when the user clicks on like
+    $('.like').on('click', function(){
+      var news_id = $(this).data('id');
+          $news = $(this);
+
+      $.ajax({
+        url: 'index.php',
+        type: 'post',
+        data: {
+          'liked': 1,
+          'news_id': news_id
+        },
+        success: function(response){
+          $news.parent().find('span.fakes_count').text(response + " fakes");
+          $news.addClass('hide');
+          $news.siblings().removeClass('hide');
+        }
+      });
+    });
+
+    // when the user clicks on unlike
+    $('.unlike').on('click', function(){
+      var news_id = $(this).data('id');
+        $news = $(this);
+
+      $.ajax({
+        url: 'index.php',
+        type: 'post',
+        data: {
+          'unliked': 1,
+          'news_id': news_id
+        },
+        success: function(response){
+          $news.parent().find('span.fakes_count').text(response + " fakes");
+          $news.addClass('hide');
+          $news.siblings().removeClass('hide');
+        }
+      });
+    });
+  });
+
+
+	
+	
+
+
    $(function(){
  
        var userLoggedIn = '<?php echo $userLoggedIn; ?>';
