@@ -111,7 +111,7 @@ if(isset($_POST['post'])){
 	<div class="news_details column">
     <h4>Featured News:</h4>
 <?php
-if (isset($_POST['liked'])) {
+if (isset($_POST['mark_fake'])) { //marked as fake
     $news_id = $_POST['news_id'];
     $result = mysqli_query($con, "SELECT * FROM news WHERE id=$news_id");
     $row = mysqli_fetch_array($result);
@@ -123,7 +123,7 @@ if (isset($_POST['liked'])) {
     echo $n+1;
     exit();
   }
-  if (isset($_POST['unliked'])) {
+  if (isset($_POST['mark_real'])) { //marked as real
     $news_id = $_POST['news_id'];
     $result = mysqli_query($con, "SELECT * FROM news WHERE id=$news_id");
     $row = mysqli_fetch_array($result);
@@ -191,7 +191,9 @@ if (isset($_POST['liked'])) {
 <script src="jquery.min.js"></script>
 <script>
   $(document).ready(function(){
-    // when the user clicks on like
+    //when the user clicks on like/thumbs down button
+    //decrement score by 1
+    //articles with low score are more genuine 
     $('.like').on('click', function(){
       var news_id = $(this).data('id');
           $news = $(this);
@@ -200,7 +202,7 @@ if (isset($_POST['liked'])) {
         url: 'index.php',
         type: 'post',
         data: {
-          'liked': 1,
+          'mark_fake': 1,
           'news_id': news_id
         },
         success: function(response){
@@ -211,7 +213,9 @@ if (isset($_POST['liked'])) {
       });
     });
 
-    // when the user clicks on unlike
+    // when the user clicks on unlike/thumbs up button
+    //increment score by 1
+    //articles with high score are more fake
     $('.unlike').on('click', function(){
       var news_id = $(this).data('id');
         $news = $(this);
@@ -220,7 +224,7 @@ if (isset($_POST['liked'])) {
         url: 'index.php',
         type: 'post',
         data: {
-          'unliked': 1,
+          'mark_real': 1,
           'news_id': news_id
         },
         success: function(response){
