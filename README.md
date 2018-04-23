@@ -17,4 +17,4 @@ https://trello.com/g54idssocial_media_app
 
 ###Development Environment
 Local Xampp Web Server - Apache + MySQL
-Software: Adobe Dreamweaver CC 2018
+Software: Sublime Text
